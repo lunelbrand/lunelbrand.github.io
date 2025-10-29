@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LUNEL — Minimal Fashion</title>
+  <meta name="description" content="LUNEL — moda minimalista contemporánea. Líneas puras, siluetas limpias y materiales atemporales.">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --muted:#f4f4f4;
+      --line:#e6e6e6;
+      --text:#0b0b0b;
+      --muted-dark:#8a8a8a;
+      --accent:#111111;
+      --radius:10px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:1000;
+      background:var(--bg); border-bottom:1px solid var(--line);
+      display:flex; align-items:center; gap:20px; padding:14px 22px;
+      justify-content:space-between;
+    }
+    .left{
+      display:flex; align-items:center; gap:14px;
+    }
+    .logo{
+      width:56px; height:56px; display:block; object-fit:contain;
+    }
+    /* We removed textual brand name per request */
+
+    nav{display:flex; gap:18px; align-items:center;}
+    nav a{font-weight:600; color:var(--accent); padding:6px 8px; border-radius:8px}
+    nav a:hover{color:var(--muted-dark); background:transparent}
+
+    /* Hero */
+    .hero{
+      padding:80px 18px 60px; text-align:left; max-width:1100px; margin:0 auto;
+      display:grid; grid-template-columns:1fr 360px; gap:40px; align-items:center;
+    }
+    .hero-left h1{font-size:36px; letter-spacing:2px; margin:0 0 12px}
+    .hero-left p{color:var(--muted-dark); margin:0 0 18px; max-width:680px}
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap}
+
+    .btn{
+      display:inline-block; padding:10px 18px; border-radius:8px; font-weight:700; cursor:pointer;
+      background:var(--accent); color:#fff; border:none;
+    }
+    .btn.ghost{background:transparent;color:var(--accent); border:1px solid var(--line)}
+
+    /* Right card */
+    .card{
+      background:var(--muted); padding:18px; border-radius:12px; text-align:center;
+      box-shadow:0 6px 20px rgba(10,10,10,0.03);
+    }
+
+    /* Productos */
+    section{padding:60px 18px; max-width:1100px; margin:0 auto}
+    h2.section-title{font-size:24px; letter-spacing:1.5px; margin:0 0 22px}
+    .grid{
+      display:grid; gap:20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .producto{
+      background:var(--muted); padding:14px; border-radius:12px; text-align:center;
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+    .producto:hover{transform:translateY(-6px); box-shadow:0 10px 30px rgba(10,10,10,.06)}
+    .producto img{border-radius:8px; height:300px; object-fit:cover}
+    .producto h3{margin:12px 0 6px; font-size:16px}
+    .producto p.desc{color:var(--muted-dark); font-size:14px; margin:0 0 8px}
+    .producto .precio{font-weight:800; margin-bottom:8px}
+
+    .btn-agregar{background:var(--accent); color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer}
+
+    /* Carrito */
+    .carrito-wrap{background:transparent; padding:14px}
+    .carrito-box{
+      margin:0 auto; max-width:560px; background:var(--muted); border-radius:12px; padding:14px;
+      border:1px solid var(--line);
+    }
+    .carrito-list{list-style:none; padding:0; margin:0}
+    .carrito-item{display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #eee; align-items:center}
+    .carrito-item:last-child{border-bottom:none}
+    .carrito-meta{display:flex; gap:10px; align-items:center}
+    .small{font-size:13px;color:var(--muted-dark)}
+
+    /* Filosofía (antes "Sobre") */
+    .filo{
+      background:linear-gradient(180deg, #fff 0%, #fbfbfb 100%);
+      border-radius:12px; padding:28px; border:1px solid var(--line);
+    }
+    .filo p{color:var(--muted-dark); line-height:1.6; margin:12px 0 0}
+
+    /* Contacto */
+    .contacto .links{display:flex; gap:16px; align-items:center; justify-content:center; flex-wrap:wrap}
+    .contacto a{font-weight:700}
+
+    /* Footer */
+    footer{padding:30px 18px; text-align:center; color:var(--muted-dark); font-size:13px}
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; text-align:center}
+      .hero-left{text-align:center}
+      .hero-cta{justify-content:center}
+      .card{order:3}
+    }
+    @media (max-width:520px){
+      .producto img{height:220px}
+      header{padding:12px}
+      .logo{width:46px;height:46px}
+      nav{gap:8px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="left">
+      <!-- LOGO: sube tu imagen como "logo.webp" al mismo directorio del index.html -->
+      <img src="logo.webp" alt="LUNEL logo" class="logo" />
+    </div>
+
+    <nav aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#carrito">Carrito</a>
+      <a href="#filosofia">Filosofía</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- HERO / INICIO -->
+  <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <div class="hero-left">
+      <h1 id="hero-title">Minimalismo con espíritu contemporáneo</h1>
+      <p>Una marca contemporánea que redefine el minimalismo con líneas puras y un enfoque contemporáneo.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#productos">Ver colección</a>
+        <a class="btn ghost" href="#contacto">Contactar</a>
+      </div>
+    </div>
+
+    <aside class="card">
+      <strong>Edición inicial</strong>
+      <p class="small" style="margin-top:8px">Piezas seleccionadas. Añade al carrito y envía tu pedido por correo o Instagram.</p>
+    </aside>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section id="productos" aria-labelledby="prod-title">
+    <h2 id="prod-title" class="section-title">Colección</h2>
+
+    <div class="grid" id="grid-productos">
+      <!-- Producto 1 -->
+      <div class="producto" data-nombre="Top Minimal" data-precio="7.00">
+        <img src="https://via.placeholder.com/600x800?text=Top+Minimal" alt="Top Minimal">
+        <h3>Top Minimal</h3>
+        <p class="desc">Corte limpio · Versátil</p>
+        <div class="precio">€7.00</div>
+        <button class="btn-agregar">Añadir</button>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="producto" data-nombre="Camiseta Básica" data-precio="9.50">
+        <img src="https://via.placeholder.com/600x800?text=Camiseta+Básica" alt="Camiseta Básica">
+        <h3>Camiseta Básica</h3>
+        <p class="desc">Algodón suave · Corte relajado</p>
+        <div class="precio">€9.50</div>
+        <button class="btn-agregar">Añadir</button>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="producto" data-nombre="Sudadera Luna" data-precio="15.00">
+        <img src="https://via.placeholder.com/600x800?text=Sudadera+Luna" alt="Sudadera Luna">
+        <h3>Sudadera Luna</h3>
+        <p class="desc">Oversize ligero · Unisex</p>
+        <div class="precio">€15.00</div>
+        <button class="btn-agregar">Añadir</button>
+      </div>
+
+      <!-- Producto 4 -->
+      <div class="producto" data-nombre="Pantalón Noche" data-precio="20.00">
+        <img src="https://via.placeholder.com/600x800?text=Pantalón+Noche" alt="Pantalón Noche">
+        <h3>Pantalón Noche</h3>
+        <p class="desc">Silueta recta · Cómodo</p>
+        <div class="precio">€20.00</div>
+        <button class="btn-agregar">Añadir</button>
+      </div>
+
+      <!-- Producto 5 -->
+      <div class="producto" data-nombre="Top Eclipse" data-precio="12.00">
+        <img src="https://via.placeholder.com/600x800?text=Top+Eclipse" alt="Top Eclipse">
+        <h3>Top Eclipse</h3>
+        <p class="desc">Detalles sutiles · Fino tejido</p>
+        <div class="precio">€12.00</div>
+        <button class="btn-agregar">Añadir</button>
+      </div>
+
+      <!-- Producto 6 -->
+      <div class="producto" data-nombre="Polo Claro" data-precio="8.50">
+        <img src="https://via.placeholder.com/600x800?text=Polo+Claro" alt="Polo Claro">
+        <h3>Polo Claro</h3>
+        <p class="desc">Versátil · Lavado fácil</p>
+        <div class="precio">€8.50</div>
+        <button class="btn-agregar">Añadir</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARRITO -->
+  <section id="carrito" aria-labelledby="carrito-title">
+    <h2 id="carrito-title" class="section-title">Tu carrito</h2>
+    <div class="carrito-wrap">
+      <div class="carrito-box" id="carrito-box">
+        <ul class="carrito-list" id="lista-carrito">
+          <li class="small">No hay productos añadidos</li>
+        </ul>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;">
+          <div class="small">Total:</div>
+          <div id="total" style="font-weight:800">€0.00</div>
+        </div>
+
+        <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap">
+          <button class="btn" id="btn-enviar">Enviar pedido</button>
+          <button class="btn ghost" id="btn-vaciar">Vaciar</button>
+        </div>
+
+        <p class="small" style="margin-top:10px">Al pulsar "Enviar pedido" se abrirá tu aplicación de correo con el pedido prellenado para enviar a <strong>lun4l1unel@gmail.com</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILOSOFÍA -->
+  <section id="filosofia" aria-labelledby="filo-title">
+    <h2 id="filo-title" class="section-title">Filosofía</h2>
+    <div class="filo">
+      <p><strong>LUNEL</strong> redefine la moda minimalista mediante líneas puras, siluetas limpias y materiales atemporales.  
+      Diseñamos pensando en la comodidad, la simplicidad y la durabilidad: piezas que acompañan tu día a día sin ruido, siempre con intención.</p>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" aria-labelledby="contacto-title">
+    <h2 id="contacto-title" class="section-title">Contacto</h2>
+    <div class="contacto">
+      <div class="links">
+        <div>📧 <a href="mailto:lun4l1unel@gmail.com">lun4l1unel@gmail.com</a></div>
+        <div>📸 <a href="https://instagram.com/lune1l" target="_blank">@lune1l</a></div>
+      </div>
+      <p class="small" style="margin-top:12px">¿Preguntas sobre tallas o colaboraciones? Escríbenos y te responderemos lo antes posible.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> LUNEL — Minimal Fashion
+  </footer>
+
+  <!-- SCRIPTS: carrito simple + envío por mail -->
+  <script>
+    // Elementos
+    const botonesAgregar = document.querySelectorAll('.btn-agregar');
+    const listaCarrito = document.getElementById('lista-carrito');
+    const totalEl = document.getElementById('total');
+    const btnVaciar = document.getElementById('btn-vaciar');
+    const btnEnviar = document.getElementById('btn-enviar');
+
+    let carrito = [];
+
+    function formatea(num){
+      return Number(num).toFixed(2);
+    }
+
+    function actualizarUI(){
+      listaCarrito.innerHTML = '';
+      if(carrito.length === 0){
+        listaCarrito.innerHTML = '<li class="small">No hay productos añadidos</li>';
+        totalEl.textContent = '€0.00';
+        return;
+      }
+      carrito.forEach((item, i) => {
+        const li = document.createElement('li');
+        li.className = 'carrito-item';
+        li.innerHTML = `
+          <div>
+            <div style="font-weight:700">${item.nombre}</div>
+            <div class="small">${item.cantidad} × €${formatea(item.precio)}</div>
+          </div>
+          <div class="carrito-meta">
+            <div style="font-weight:800">€${formatea(item.precio * item.cantidad)}</div>
+            <button style="background:none;border:none;color:var(--muted-dark);cursor:pointer;padding-left:12px" onclick="quitar(${i})">✕</button>
+          </div>
+        `;
+        listaCarrito.appendChild(li);
+      });
+      const total = carrito.reduce((s, it) => s + (it.precio * it.cantidad), 0);
+      totalEl.textContent = '€' + formatea(total);
+    }
+
+    function agregarProducto(nombre, precio){
+      const existe = carrito.find(c => c.nombre === nombre);
+      if(existe){
+        existe.cantidad += 1;
+      } else {
+        carrito.push({nombre, precio: Number(precio), cantidad:1});
+      }
+      actualizarUI();
+    }
+
+    function quitar(index){
+      carrito.splice(index,1);
+      actualizarUI();
+    }
+
+    function vaciar(){
+      carrito = [];
+      actualizarUI();
+    }
+
+    botonesAgregar.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.producto');
+        const nombre = card.getAttribute('data-nombre');
+        const precio = card.getAttribute('data-precio');
+        agregarProducto(nombre, precio);
+      });
+    });
+
+    btnVaciar.addEventListener('click', () => {
+      if(confirm('¿Vaciar el carrito?')) vaciar();
+    });
+
+    btnEnviar.addEventListener('click', () => {
+      if(carrito.length === 0){
+        alert('Tu carrito está vacío.');
+        return;
+      }
+      const lineas = carrito.map(it => `${it.nombre} — ${it.cantidad} x €${formatea(it.precio)} = €${formatea(it.precio * it.cantidad)}`);
+      const total = carrito.reduce((s,it) => s + (it.precio*it.cantidad),0);
+      const cuerpo = encodeURIComponent(`Hola,\n\nQuiero realizar el siguiente pedido:\n\n${lineas.join('\n')}\n\nTotal: €${formatea(total)}\n\nNombre:\nDirección:\nTeléfono:\n\nGracias.`);
+      const mailto = `mailto:lun4l1unel@gmail.com?subject=${encodeURIComponent('Pedido LUNEL')}&body=${cuerpo}`;
+      window.location.href = mailto;
+    });
+
+    // Exponer quitar para usar en onclick inline
+    window.quitar = quitar;
+
+    // Init
+    actualizarUI();
+  </script>
+</body>
+</html>
