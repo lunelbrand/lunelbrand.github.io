@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUNEL | Tienda de Ropa Minimalista</title>
+  <meta name="description" content="LUNEL — moda minimalista en blanco, negro y gris. Ropa moderna, cómoda y elegante.">
+  <style>
+    :root {
+      --negro: #111;
+      --gris: #f3f3f3;
+      --gris-medio: #aaa;
+      --blanco: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--blanco);
+      color: var(--negro);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--blanco);
+      border-bottom: 1px solid #ddd;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: var(--negro);
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: color .3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gris-medio);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: var(--gris);
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      letter-spacing: 3px;
+    }
+
+    .hero p {
+      color: #555;
+      max-width: 600px;
+      margin: 20px auto;
+      font-size: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: var(--negro);
+      color: var(--blanco);
+      padding: 12px 26px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background .3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #333;
+    }
+
+    .productos {
+      padding: 80px 40px;
+      background: var(--blanco);
+    }
+
+    .productos h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      font-size: 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .producto {
+      background: var(--gris);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform .3s ease;
+    }
+
+    .producto:hover {
+      transform: translateY(-5px);
+    }
+
+    .producto img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .producto h3 {
+      margin-top: 15px;
+      font-size: 18px;
+    }
+
+    .producto p {
+      color: #666;
+      font-size: 15px;
+      margin: 8px 0;
+    }
+
+    .precio {
+      font-weight: bold;
+      color: var(--negro);
+    }
+
+    .btn-agregar {
+      margin-top: 10px;
+      background: var(--negro);
+      color: var(--blanco);
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background .3s;
+    }
+
+    .btn-agregar:hover {
+      background: #333;
+    }
+
+    #carrito {
+      background: var(--gris);
+      padding: 40px;
+      text-align: center;
+    }
+
+    #carrito h2 {
+      margin-bottom: 20px;
+    }
+
+    .carrito-lista {
+      list-style: none;
+      margin: 0 auto;
+      max-width: 400px;
+      padding: 0;
+      background: var(--blanco);
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .carrito-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .carrito-item:last-child {
+      border-bottom: none;
+    }
+
+    .btn-vaciar, .btn-enviar {
+      margin-top: 15px;
+      background: var(--negro);
+      color: var(--blanco);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-vaciar:hover, .btn-enviar:hover {
+      background: #333;
+    }
+
+    .sobre, .contacto {
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .sobre {
+      background: var(--gris);
+    }
+
+    .contacto {
+      background: var(--blanco);
+    }
+
+    footer {
+      background: var(--negro);
+      color: var(--blanco);
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">LUNEL</div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#carrito">Carrito</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <h1>Moda minimalista para cada día</h1>
+    <p>LUNEL ofrece ropa moderna y cómoda inspirada en los tonos neutros: blanco, negro y gris. Diseños simples, materiales de calidad y elegancia sin esfuerzo.</p>
+    <a href="#productos" class="btn">Explorar colección</a>
+  </section>
+
+  <section class="productos" id="productos">
+    <h2>Colección destacada</h2>
+    <div class="grid">
+      <div class="producto" data-nombre="Camisa Negra" data-precio="39.90">
+        <img src="https://via.placeholder.com/300x350?text=Camisa+Negra" alt="Camisa negra minimalista">
+        <h3>Camisa Negra</h3>
+        <p>Algodón orgánico · Corte clásico</p>
+        <p class="precio">€39.90</p>
+        <button class="btn-agregar">Añadir al carrito</button>
+      </div>
+      <div class="producto" data-nombre="Pantalón Gris" data-precio="49.90">
+        <img src="https://via.placeholder.com/300x350?text=Pantalón+Gris" alt="Pantalón gris unisex">
+        <h3>Pantalón Gris</h3>
+        <p>Comodidad y estilo urbano</p>
+        <p class="precio">€49.90</p>
+        <button class="btn-agregar">Añadir al carrito</button>
+      </div>
+      <div class="producto" data-nombre="Sudadera Blanca" data-precio="44.90">
+        <img src="https://via.placeholder.com/300x350?text=Sudadera+Blanca" alt="Sudadera blanca oversize">
+        <h3>Sudadera Blanca</h3>
+        <p>Diseño oversize · Unisex</p>
+        <p class="precio">€44.90</p>
+        <button class="btn-agregar">Añadir al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="carrito">
+    <h2>🛍️ Tu carrito</h2>
+    <ul class="carrito-lista" id="lista-carrito">
+      <li class="carrito-item">No hay productos añadidos</li>
+    </ul>
+    <button class="btn-vaciar" id="vaciar-carrito">Vaciar carrito</button>
+    <button class="btn-enviar" id="enviar-pedido">Enviar pedido</button>
+    <p style="margin-top:10px;color:#555;">Al pulsar “Enviar pedido”, se abrirá tu correo con los productos seleccionados.</p>
+  </section>
+
+  <section class="sobre" id="sobre">
+    <h2>Sobre LUNEL</h2>
+    <p>En LUNEL creemos que la moda debe ser simple, funcional y atemporal. Creamos ropa pensada para durar y acompañarte en tu día a día.</p>
+  </section>
+
+  <section class="contacto" id="contacto">
+    <h2>Contacto</h2>
+    <p>📧 <a href="mailto:lun4l1unel@gmail.com">lun4l1unel@gmail.com</a></p>
+    <p>📸 Instagram: <a href="https://instagram.com/lune1l" target="_blank">@lune1l</a></p>
+  </section>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> LUNEL — Moda minimalista
+  </footer>
+
+  <script>
+    const botonesAgregar = document.querySelectorAll('.btn-agregar');
+    const listaCarrito = document.getElementById('lista-carrito');
+    const btnVaciar = document.getElementById('vaciar-carrito');
+    const btnEnviar = document.getElementById('enviar-pedido');
+    let carrito = [];
+
+    function renderCarrito() {
+      listaCarrito.innerHTML = '';
+      if (carrito.length === 0) {
+        listaCarrito.innerHTML = '<li class="carrito-item">No hay productos añadidos</li>';
+        return;
+      }
+      carrito.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.className = 'carrito-item';
+        li.innerHTML = `
+          ${item.nombre} - €${item.precio}
+          <button style="background:none;border:none;color:#888;cursor:pointer" onclick="eliminarDelCarrito(${index})">✕</button>
+        `;
+        listaCarrito.appendChild(li);
+      });
+    }
+
+    botonesAgregar.forEach(boton => {
+      boton.addEventListener('click', () => {
+        const producto = boton.parentElement;
+        const nombre = producto.getAttribute('data-nombre');
+        const precio = producto.getAttribute('data-precio');
+        carrito.push({ nombre, precio });
+        renderCarrito();
+      });
+    });
+
+    btnVaciar.addEventListener('click', () => {
+      carrito = [];
+      renderCarrito();
+    });
+
+    btnEnviar.addEventListener('click', () => {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+        return;
+      }
+
+      const mensaje = carrito.map(p => `${p.nombre} - €${p.precio}`).join('%0A');
+      const mailto = `mailto:lun4l1unel@gmail.com?subject=Pedido%20LUNEL&body=Hola,%20quiero%20realizar%20el%20siguiente%20pedido:%0A%0A${mensaje}%0A%0AGracias.`;
+      window.location.href = mailto;
+    });
+
+    window.eliminarDelCarrito = (index) => {
+      carrito.splice(index, 1);
+      renderCarrito();
+    };
+
+    renderCarrito();
+  </script>
+</body>
+</html>
